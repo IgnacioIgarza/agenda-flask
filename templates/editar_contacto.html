@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <title>Editar Contacto</title>
+</head>
+<body>
+    <div class="recuadro">
+        <h3>Editar Contacto</h3>
+        <form action="/actualizar_contacto/{{ contacto[0] }}" method="POST">
+            <input type="text" name="nombre" placeholder="Nombre" value="{{ contacto[1] }}">
+            <input type="text" name="apellido" placeholder="Apellido" value="{{ contacto[2] }}">
+
+            <input type="text" name="fecha_nacimiento" placeholder="Fecha de Nacimiento (DD-MM-AAAA)" value="{{ contacto[3] }}">
+
+            <input type="email" name="email" placeholder="Email" value="{{ contacto[5] }}">
+            <input type="tel" name="telefono" placeholder="Número de Teléfono" value="{{ contacto[4] }}">
+
+            <button  type="submit" class="boton_guardar">
+                Guardar
+            </button>
+
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <title>Agenda de Contactos</title>
+</head>
+<body>
+    <h1>Agenda de Contactos</h1>
+    <h3>
+        ¡Bienvenido, {{ session['usuario'] }}!
+    </h3>
+    <br>
+    <div>
+        {% with mensajes = get_flashed_messages() %}
+            {% if mensajes %}
+                <ul>
+                {% for mensaje in mensajes %}
+                    <p>{{ mensaje}}</p>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+    <br>
+    <div class="recuadro">
+        <h3>Agregar Nuevo Contacto</h3>
+        <form action="/añadir_contacto" method="POST">
+            <input type="text" name="nombre" placeholder="Nombre">
+            <input type="text" name="apellido" placeholder="Apellido">
+
+            <input type="text" name="fecha_nacimiento" placeholder="Fecha de Nacimiento (DD-MM-AAAA)">
+
+            <input type="email" name="email" placeholder="Email">
+            <input type="tel" name="telefono" placeholder="Número de Teléfono">
+
+            <button type="submit" class="boton_guardar">
+                Guardar
+            </button>
+        </form>
+    </div>
+
+    <div class="recuadro">
+        <br>
+        <h3>Lista de Contactos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Operaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los contactos se mostrarán aquí -->
+                {% for contacto in contactos %}
+                    <tr>
+                        <td>{{ contacto[1] }}</td>
+                        <td>{{ contacto[2] }}</td>
+                        <td>{{ contacto[3] }}</td>
+                        <td>{{ contacto[5] }}</td>
+                        <td>{{ contacto[4] }}</td>
+                        <td>
+                            <a href="/editar_contacto/{{ contacto[0] }}" ><button class="boton_editar">Editar</button></a>
+                            <a href="/borrar_contacto/{{ contacto[0] }}" ><button class="boton_borrar">Borrar</button></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{{url_for('autenticacion')}}">Cerrar Sesión</a>
+</body>
+</html>
+

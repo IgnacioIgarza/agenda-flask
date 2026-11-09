@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/estilos.css">
+    <title>Registro</title>
+</head>
+<body>
+    <h1>Agenda</h1>
+    <h2>Registro</h2>
+    <br>
+        <div>
+        {% with mensajes = get_flashed_messages() %}
+            {% if mensajes %}
+                <ul>
+                {% for mensaje in mensajes %}
+                    <p>{{ mensaje}}</p>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+    <br>
+    <div class="recuadro">
+        <h3>Agregue un nuevo usuario</h3>
+        <form action="/añadir_usuario" method="POST">
+            <input type="text" name="usuario" placeholder="Ingrese un nuevo usuario">
+            <input type="text" name="contraseña" placeholder="Ingrese una contraseña">
+
+            <button type="submit" class="boton_guardar">
+                Crear usuario
+            </button>
+        </form>
+    </div>
+    <a href="{{url_for('autenticacion')}}">Si tiene cuenta, ir a Autenticación</a>
+</body>
+</html>

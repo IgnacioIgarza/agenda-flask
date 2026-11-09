@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/estilos.css">
+    <title>Autenticación</title>
+</head>
+<body>
+    <h1>Bienvenido a la Agenda</h1>
+    <h2>Autenticación</h2>
+    <br>
+    <div>
+        {% with mensajes = get_flashed_messages() %}
+            {% if mensajes %}
+                <ul>
+                {% for mensaje in mensajes %}
+                    <p>{{ mensaje}}</p>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+    <br>
+    <div class="recuadro">
+        <h3>Inicie sesión</h3>
+        <form action="/inicio_sesion" method="POST">
+            <input type="text" name="usuario_ingresado" placeholder="Ingrese su usuario">
+            <input type="text" name="contraseña_ingresada" placeholder="Ingrese su contraseña">
+
+            <button type="submit" class="boton_guardar">
+                Ir a la agenda
+            </button>
+        </form>
+    </div>
+    <a href="{{url_for('registro')}}">Si no tiene cuenta, ir a Registro</a>
+</body>
+</html>

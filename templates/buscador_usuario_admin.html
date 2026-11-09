@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/estilos.css">
+    <title>Buscador de Usuarios</title>
+</head>
+<body>
+    <h1>Buscador de Usuarios del Administrador</h1>
+    <br>
+    <!-- Buscador de usuarios -->
+    <div class="recuadro">
+        <br>
+        <h3>Buscar Usuario</h3>
+        <form action="/buscar_usuario" method="POST">
+            <input type="text" name="termino_busqueda" placeholder="Ingrese usuario a buscar">
+            <button type="submit" class="boton_buscar">Buscar</button>
+        </form>
+        {% if resultados is defined %}
+            <h4>Resultados de búsqueda para "{{ termino }}":</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Contraseña</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in resultados %}
+                        <tr>
+                            <td>{{ usuario[1] }}</td>
+                            <td>{{ usuario[2] }}</td>
+                            <td>
+                                <a href="/editar_contraseña_usuario/{{ usuario[0] }}" ><button class="boton_editar">Editar Contraseña</button></a>
+                                <a href="/borrar_usuario/{{ usuario[0] }}" ><button class="boton_borrar">Eliminar Usuario</button></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        {% if not resultados and termino is defined %}
+            <h4>No se encontraron usuarios que coincidan con "{{ termino }}".</h4>
+        {% endif %}
+    </div>
+    <!-- Fin buscador de usuarios -->
+    <a href="{{url_for('Index')}}">Volver al Panel del Administrador</a>
+    <br>
+    <a href="{{url_for('autenticacion')}}">Ir a la Autenticación</a>
+</body>
+</html>
