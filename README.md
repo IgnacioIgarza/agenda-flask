@@ -10,21 +10,28 @@ La app conecta a una base de datos
 ![Vista registro](https://github.com/IgnacioIgarza/agenda-basica-flask/blob/main/static/img/pantallaRegistro.bmp)
 
 ## Tiene un perfil de Administrador que le permite:
-cear nuevos contactos, editarlos o borrarlos,
-ver los usuarios y editar su contraseña,
-y ver todos los contantos.
+- cear nuevos contactos,editarlos o borrarlos,
+- buscar usuarios,
+- ver todos los usuarios y editar su contraseña o borrarlo (excepto el usuario admin) y
+- ver todos los contantos.
 ![Vista Admin](https://github.com/IgnacioIgarza/agenda-basica-flask/blob/main/static/img/pantallaAdmin.bmp)
-## Tiene un perfil de usuario común que le permite:
-ver sus propios contactos,
-editarlos o borrarlos.
+
+## Tiene un perfil de Usuario Común que le permite:
+- ver sus propios contactos,
+- editarlos o borrarlos.
 ![Vista Usuario](https://github.com/IgnacioIgarza/agenda-basica-flask/blob/main/static/img/pantallaUsuario.bmp)
 
 ## Para iniciar 
-Activar la base de datos que debe tener la sig. estructura:
-...
-luego desde la consola inicie la aplición:
+### Activar la base de datos que debe tener la sig. estructura:
+### root, con contraseña "" (un string vacío)
+### base de datos llamada flask_contacto
+### la base de datos tiene 2 tablas:
+- usuarios con las columnas id, usuario y contraseña
+- contactos con las columnas id, nombre, apellido, fecha_nacimiento, telefono, email, usuario_id
+  
+### luego desde la consola inicie la aplición:
 ``` bash
 python app.py
 ```
-En un navegador inicie la app en 
+En un navegador inicie la app en:
 localhost:5000/
