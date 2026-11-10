@@ -13,8 +13,8 @@ La app conecta a una base de datos
 - cear nuevos contactos, editarlos o borrarlos,
 - buscar usuarios,
 - ver todos los usuarios y editar su contraseña o borrarlo (excepto el usuario admin) y
-- ver todos los contantos.
-(ver nota al final del ReadMe)
+- ver todos los contactos.
+- (ver nota al final del ReadMe)
 ![Vista Admin](https://github.com/IgnacioIgarza/agenda-basica-flask/blob/main/static/img/pantallaAdmin.bmp)
 
 ## Tiene un perfil de Usuario Común que le permite:
@@ -29,12 +29,14 @@ La app conecta a una base de datos
 ### la base de datos tiene 2 tablas:
 - usuarios con las columnas id, usuario y contraseña (ver nota al final del ReadMe)
 - contactos con las columnas id, nombre, apellido, fecha_nacimiento, telefono, email, usuario_id
-  
+
+
 ### luego desde la consola inicie la aplición:
 ``` bash
 python app.py
 ```
 En un navegador inicie la app en:
 localhost:5000/
+
 
 - nota: el usuario admin es un usuario especial que accede a un menú específico, como se explica arriba. Además no se puede borrar, pero es importante que en el códico, lo que permite no borrarlo es su id (en el caso del que se realizó inicialmente, el id 7 es el del admin, y no se puede borrar)
