@@ -15,7 +15,7 @@ La app conecta a una base de datos
 - ver todos los usuarios y editar su contraseña o borrarlo (excepto el usuario admin) y
 - ver todos los contactos.
 - (ver nota al final del ReadMe)
-![Vista Admin](https://github.com/IgnacioIgarza/agenda-basica-flask/blob/main/static/img/pantallaAdmin.bmp)
+![Vista Admin](https://github.com/IgnacioIgarza/agenda-flask/blob/main/static/img/pantallaAdministrador.bmp)
 
 ## Tiene un perfil de Usuario Común que le permite:
 - ver sus propios contactos,
